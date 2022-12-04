@@ -3,6 +3,7 @@ import '../App.css';
 import Banner from '../assets/banner.jpg';
 import {Heading, Button} from '@chakra-ui/react';
 import GppGoodIcon from '@mui/icons-material/GppGood';
+import { NavLink } from 'react-router-dom';
 function HeroSection() {
   return (
     <>
@@ -17,11 +18,11 @@ function HeroSection() {
   </div>
 
     </div>
-
+<NavLink to={'/products'}>
     <Button className='md:relative md:bottom-72 md:left-48 lg:relative lg:bottom:72 lg:left-48  mt-4 w-40 block m-auto' colorScheme='purple' variant='outline' size={'lg'} >
-    Shop Now
+    Shop Now 
   </Button>
-  
+  </NavLink>
 
   <div className=' md:relative md:bottom-52 md:ml-56 lg:bottom-52 lg:pl-56  mt-4 text-center   '>
     <GppGoodIcon style={{color:'green'}}/> <p className='inline font-black'>Award wining 24/7 customer service</p>

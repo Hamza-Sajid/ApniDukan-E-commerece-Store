@@ -13,10 +13,11 @@ function FeaturedProducts() {
 
   return (
     <div className=" w-full relative bottom-36  mt-36 md:mt-0 lg:mt-0">
+      
       <Text fontSize="4xl" className="relative top-6 font-semibold text-center">
-        Deal of the Day
+        Deal of the Day 
       </Text>
-
+      
       <div className="flex md:flex-nowrap lg:flex-nowrap flex-wrap w-3/4 m-auto ">
         {isLoading == true ? (
           <h2>Loading data</h2>

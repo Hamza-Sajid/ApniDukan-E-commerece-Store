@@ -14,7 +14,10 @@ const initialState = {
     loading:false,  
     featured_products:[],
     text:'',
-    fiter_products:[]
+    fiter_products:[],
+    price_value:'0',
+    maxProductValue:'',
+    minProductValue:'',
 }
 
 const FilterProvider = ({children})=>
@@ -24,8 +27,30 @@ const FilterProvider = ({children})=>
         
     const [state,dispatch]=useReducer(filterReducer,initialState);    
 
+    const handlePriceChange= (e)=>
+    {
+        const val = e.target.value;
+        dispatch({type:'ADJUST_PRIE_VALUE', payload:{val}})
+    }
 
+    const updateMobile = ()=>
+    {
+        dispatch({type:'UPDATE_MOBILE'})
+    }
 
+    const updateLaptop = ()=>
+    {
+        dispatch({type:'UPDATE_LAPTOP'})
+    }
+    const updateWatches = ()=>
+    {
+        dispatch({type:'UPDATE_WATCHES'})
+    }
+
+    const clearFilter = ()=>
+    {
+        dispatch({type:'CLEAR_FILTER'})
+    }
 
          const updateFilterValue = (e)=>
         {
@@ -66,7 +91,7 @@ const FilterProvider = ({children})=>
 
 
     return(
-        <FilterContext.Provider value={ { ...state , updateFilterValue}}>
+        <FilterContext.Provider value={ { ...state,clearFilter,handlePriceChange ,updateWatches,updateLaptop,updateMobile, updateFilterValue}}>
             {children}
         </FilterContext.Provider>
     )

@@ -15,9 +15,13 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react'
-
+import {userCartConsumer} from '../Context/Cart_Context';
 
 function SingleProduct() {
+
+  const {addToCart} = userCartConsumer();
+
+  
 
   const [imageNumber,setImageNumber]=useState(0);
   const [colors,setColors]=useState();
@@ -164,7 +168,7 @@ function SingleProduct() {
     {/* Add To Bag Code */}
     <div className=' w-2/4 h-1/4 mt-4 hidden md:block lg:block'>
        <NavLink to="/cart">
-          <Button className='mt-8  w-full h-2/4 ' leftIcon={<ShoppingBagIcon />} colorScheme='purple'  size={'lg'} variant='solid'>
+          <Button  onClick={()=> addToCart( id,selectedColor,quantity , data)} className='mt-8  w-full h-2/4 ' leftIcon={<ShoppingBagIcon />} colorScheme='purple'  size={'lg'} variant='solid'>
     Add to Bag
   </Button>
   </NavLink>
@@ -249,7 +253,7 @@ function SingleProduct() {
 
         <div className=' w-full h-1/4 mt-4  md:hidden lg:hidden'>
        <NavLink to="/cart">
-          <Button className='mt-8  w-full h-2/4 ' leftIcon={<ShoppingBagIcon />} colorScheme='purple'  size={'lg'} variant='solid'>
+          <Button  onClick={()=> addToCart( id,selectedColor,quantity , data)}  className='mt-8  w-full h-2/4 ' leftIcon={<ShoppingBagIcon />} colorScheme='purple'  size={'lg'} variant='solid'>
     Add to Bag
   </Button>
   </NavLink>

@@ -7,107 +7,105 @@ import Rating from "./Rating";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 
 function ProductList() {
- 
- const {products , isLoading} = useProductContext();
-const {fiter_products} = FilterConsumer();
- function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  const { products, isLoading } = useProductContext();
 
+  //TO HANDLE FILTER FUNCTIONALITY
+  const { fiter_products } = FilterConsumer();
 
-console.log(fiter_products)
+  //FUNCTION TO MAKE 1st LETTER CAPITAL
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
+
   return (
-  <div>
- 
-    <div className=" p-1 gap-x-4 flex  flex-wrap w-full overflow-hidden bg-white">
-      {isLoading === true ? (
-        <h2>Loading </h2>
-      )
-      :
-      fiter_products.length!==0 ? 
-       (
-       
-        fiter_products.map((item, index) => {
+    <div>
+      <div className=" p-1 gap-x-4 flex  flex-wrap w-full overflow-hidden ">
+        {isLoading === true ? (
+          <h2>Loading </h2>
+        ) : fiter_products.length !== 0 ? (
+          (
             
-          const randomNumber = () => {
-            return Math.round(Math.random() * (80 - 11) + 11); // Whole number between min and max
-          };
-          const name = capitalizeFirstLetter(item.name);
-          const number = randomNumber();
-          return (
-            <NavLink to={`SingleProduct/${item.id}`}>
-            <>
-              <div className="w-80 h-2/3 ml-2  mt-4  border solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
-                <img className="w-full h-full" src={item.image} />
+          fiter_products.map((item, index) => {
+            const randomNumber = () => {
+              return Math.round(Math.random() * (80 - 11) + 11); // Whole number between min and max
+            };
+            const name = capitalizeFirstLetter(item.name);
+            const number = randomNumber();
+            return (
+              <NavLink to={`SingleProduct/${item.id}`}>
+                <>
+                  <div className="w-80 h-2/3 ml-2  mt-4  border solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
+                    <img className="w-full h-full" src={item.image} />
 
-                <Text className="text-gray-600 font-medium text-2xl ml-4 mt-2">
-                  {name}
-                </Text>
-                <div className="flex justify-between mt-2 ml-4">
-                  <Text className="font-bold text-xl">Rs. {item.price}</Text>
-                  <Text className="bg-purple-600 text-white rounded-full p-3 font-extrabold mr-2">
-                    {number}% Off
-                  </Text>
-                </div>
-                <div className="mt-2 ml-4">
-                  <Rating value={item.stars} />
-                </div>
+                    <Text className="text-gray-600 font-medium text-2xl ml-4 mt-2">
+                      {name}
+                    </Text>
+                    <div className="flex justify-between mt-2 ml-4">
+                      <Text className="font-bold text-xl">
+                        Rs. {item.price}
+                      </Text>
+                      <Text className="bg-purple-600 text-white rounded-full p-3 font-extrabold mr-2">
+                        {number}% Off
+                      </Text>
+                    </div>
+                    <div className="mt-2 ml-4">
+                      <Rating value={item.stars} />
+                    </div>
 
-                <div className="flex mt-1 items-center ml-2 p-2">
-                  <LocalShippingOutlinedIcon className="text-gray-500" />{" "}
-                  <Text className="ml-2 font-light text-sm text-gray-600">
-                    Free Shipping
-                  </Text>
-                </div>
-              </div>
-            </>
-            </NavLink>
-          );
-        })       
-      ) 
-      
-      :  (
+                    <div className="flex mt-1 items-center ml-2 p-2">
+                      <LocalShippingOutlinedIcon className="text-gray-500" />{" "}
+                      <Text className="ml-2 font-light text-sm text-gray-600">
+                        Free Shipping
+                      </Text>
+                    </div>
+                  </div>
+                </>
+              </NavLink>
+            );
+          }))
+        ) : (
+          products &&
+          products.map((item, index) => {
+            const randomNumber = () => {
+              return Math.round(Math.random() * (80 - 11) + 11); // Whole number between min and max
+            };
+            const name = capitalizeFirstLetter(item.name);
+            const number = randomNumber();
+            return (
+              <NavLink to={`SingleProduct/${item.id}`}>
+                <>
+                  <div className="w-80 h-2/3 ml-2  mt-4  border solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
+                    <img className="w-full h-full" src={item.image} />
 
-        products &&
-        products.map((item, index) => {
-            
-          const randomNumber = () => {
-            return Math.round(Math.random() * (80 - 11) + 11); // Whole number between min and max
-          };
-          const name = capitalizeFirstLetter(item.name);
-          const number = randomNumber();
-          return (
-            <NavLink to={`SingleProduct/${item.id}`}>
-            <>
-              <div className="w-80 h-2/3 ml-2  mt-4  border solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
-                <img className="w-full h-full" src={item.image} />
+                    <Text className="text-gray-600 font-medium text-2xl ml-4 mt-2">
+                      {name}
+                    </Text>
+                    <div className="flex justify-between mt-2 ml-4">
+                      <Text className="font-bold text-xl">
+                        Rs. {item.price}
+                      </Text>
+                      <Text className="bg-purple-600 text-white rounded-full p-3 font-extrabold mr-2">
+                        {number}% Off
+                      </Text>
+                    </div>
+                    <div className="mt-2 ml-4">
+                      <Rating value={item.stars} />
+                    </div>
 
-                <Text className="text-gray-600 font-medium text-2xl ml-4 mt-2">
-                  {name}
-                </Text>
-                <div className="flex justify-between mt-2 ml-4">
-                  <Text className="font-bold text-xl">Rs. {item.price}</Text>
-                  <Text className="bg-purple-600 text-white rounded-full p-3 font-extrabold mr-2">
-                    {number}% Off
-                  </Text>
-                </div>
-                <div className="mt-2 ml-4">
-                  <Rating value={item.stars} />
-                </div>
-
-                <div className="flex mt-1 items-center ml-2 p-2">
-                  <LocalShippingOutlinedIcon className="text-gray-500" />{" "}
-                  <Text className="ml-2 font-light text-sm text-gray-600">
-                    Free Shipping
-                  </Text>
-                </div>
-              </div>
-            </>
-            </NavLink>
-          );
-        })
-      )}
-    </div>
+                    <div className="flex mt-1 items-center ml-2 p-2">
+                      <LocalShippingOutlinedIcon className="text-gray-500" />{" "}
+                      <Text className="ml-2 font-light text-sm text-gray-600">
+                        Free Shipping
+                      </Text>
+                    </div>
+                  </div>
+                </>
+              </NavLink>
+            );
+          })
+        )}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Prompt&display=swap');
 .bannerFont
 {
     font-family: 'Prompt', sans-serif!important;
+}
+
+.newFont{
+    font-family: 'Poppins', sans-serif;
+}
+
+.shadows
+{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }

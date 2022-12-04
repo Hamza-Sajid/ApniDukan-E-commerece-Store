@@ -8,15 +8,15 @@ function Products() {
 
   
   return (
-    <div style={{background:'#EFF7FA'}} className='p-6 flex'>
+    <div style={{background:'white'}} className='p-6 flex'>
 
-    <div className='bg-blue-400 h-screen w-1/5'>
+    <div className='h-screen w-1/5'>
       <FilterSelection/>
       </div>
-<div className='bg-green-400 w-full'>
-  <div className='bg-yellow-400 h-36'>    <Sorting/>   </div>
+<div className=' w-full'>
+  <div className=' m-3'>    <Sorting/>   </div>
       
-<div className='bg-yellow-700'>
+<div className='bg-gray-50'>
 <ProductList/>
 </div>
   

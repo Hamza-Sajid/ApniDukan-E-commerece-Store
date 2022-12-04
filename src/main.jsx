@@ -8,17 +8,19 @@ import { ChakraProvider } from '@chakra-ui/react'
 import '@fontsource/public-sans';
 import {ProductProvider} from  './Context/ProductContext';
 import {FilterProvider} from './Context/Filter_Context';
-
+import {  CartProvider } from './Context/Cart_Context';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider>
    <ProductProvider>
     <FilterProvider>
+    <CartProvider>
     <BrowserRouter>
-      
+    
     <App />
     
     </BrowserRouter>
+    </CartProvider>
     </FilterProvider>
     
     </ProductProvider>
