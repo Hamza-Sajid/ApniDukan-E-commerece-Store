@@ -1,9 +1,11 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 const CartContext = createContext();
 import {cartReducer} from '../Reducers/CartReducer';
 const CartProvider = ({children})=>
 {
 
+ 
+    
     const initialState ={
         cart:[],
         color:"RGB",
@@ -16,15 +18,23 @@ const CartProvider = ({children})=>
 
     const addToCart = (id,selectedColor,quantity,data)=>
     {
-        console.log("Going to work on the caart")
-        
         dispatch({type:'ADD_TO_CART',payload:{id,selectedColor,quantity,data}});
-        
-
+     
     }
+    
+        const removeItem = (item,index2) =>
+        {
+            
+            dispatch({type:'REMOVE_ITEM', payload:{item,index2}})
+        }
 
+        useEffect(() => {
+            localStorage.setItem('orderdItems:', JSON.stringify(state.cart));        
+        }, [state])
+        
+        
     return(
-        <CartContext.Provider value={{...state,addToCart}}>
+        <CartContext.Provider value={{...state,addToCart , removeItem}}>
             
             {children}
 
