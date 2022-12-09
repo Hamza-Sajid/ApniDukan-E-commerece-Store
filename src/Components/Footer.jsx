@@ -13,8 +13,9 @@ function Footer() {
             }}
         />
     );
+    
   return (
-    <div className='' style={{background:'#805AD5'}}>
+    <div className='' style={{background:'rgb(26 15 52)'}}>
         <div className='flex flex-wrap text-white p-8 justify-around  w-full lg:w-3/4 md:w-3/4 mx-auto'>
 
             <div className='md:w-1/3 lg:w-1/3 w-full'>

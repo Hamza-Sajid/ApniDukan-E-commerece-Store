@@ -41,6 +41,8 @@ function FilterSelection() {
 
     setHighestPrice(maxPrice);
     setLowestPrice(minPrice);
+
+    console.log(highestPrice);
   };
 
   useEffect(() => {
@@ -48,10 +50,12 @@ function FilterSelection() {
   }, [0]);
 
   return (
-    <div className="mt-16">
-      <Text className="pl-2">Search your product:</Text>
+    <div className="mt-12 bg-gray-50 h-full rounded hidden   lg:block">
+      <Text className="pl-2 pt-12 font-semibold  text-lg simpleFont ">
+        Search your product:
+      </Text>
       <input
-        className="bg-gray-100 rounded w-4/5 ml-1 pl-3"
+        className="bg-gray-100 rounded w-4/5 ml-1 pl-3 pt-1"
         placeholder="MAC"
         step={10}
         name="text"
@@ -61,28 +65,23 @@ function FilterSelection() {
         onChange={updateFilterValue}
       ></input>
 
-      <Text className="font-medium text-lg mt-6 pl-2">Categories:</Text>
+      <Text className="font-semibold text-lg mt-6 pl-2 simpleFont">
+        Categories:
+      </Text>
       <div className="pl-2">
-        <h3
-          onClick={updateMobile}
-          className="font-semibold mt-1 cursor-pointer"
-        >
+        <h3 onClick={updateMobile} className=" mt-1 cursor-pointer">
           Mobile's
         </h3>
-        <h3
-          onClick={updateLaptop}
-          className="font-semibold mt-1 cursor-pointer"
-        >
+        <h3 onClick={updateLaptop} className=" mt-1 cursor-pointer">
           Laptop
         </h3>
-        <h3
-          onClick={updateWatches}
-          className="font-semibold mt-1 cursor-pointer"
-        >
+        <h3 onClick={updateWatches} className="font-medium mt-1 cursor-pointer">
           Watches
         </h3>
       </div>
-      <Text className="font-medium text-lg mt-6 pl-2">Filter Price</Text>
+      <Text className="font-semibold text-lg mt-6 pl-2 simpleFont">
+        Filter Price
+      </Text>
 
       <input
         className="ml-3 cursor-pointer"

@@ -3,21 +3,22 @@ import { Button, Text } from "@chakra-ui/react";
 import { useProductContext } from "../Context/ProductContext";
 import { NavLink } from "react-router-dom";
 function FeaturedProducts() {
-
   const { isLoading, featureProducts, ProductContext } = useProductContext();
   //Function to make title first letter capital
-  
+
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   return (
     <div className=" w-full relative bottom-36  mt-36 md:mt-0 lg:mt-0">
-      
-      <Text fontSize="4xl" className="relative top-6 font-semibold text-center">
-        Deal of the Day 
+      <Text
+        fontSize="4xl"
+        className="relative top-6 font-medium text-center newFont"
+      >
+        Deal of the Day
       </Text>
-      
+
       <div className="flex md:flex-nowrap lg:flex-nowrap flex-wrap w-3/4 m-auto ">
         {isLoading == true ? (
           <h2>Loading data</h2>
@@ -55,7 +56,7 @@ function FeaturedProducts() {
                   </Text>
 
                   <Button
-                    colorScheme={"purple"}
+                    style={{ background: "rgb(26 15 52)", color: "white" }}
                     className="m-auto block text-center"
                   >
                     Add to Basket

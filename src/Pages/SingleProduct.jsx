@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../App.css";
 import { NavLink, useParams } from "react-router-dom";
 import SingleProductNavigation from "../Components/SingleProductNavigation";
 import { Spinner, Heading, Text, Button } from "@chakra-ui/react";
@@ -23,7 +24,7 @@ function SingleProduct() {
   const [imageNumber, setImageNumber] = useState(0);
   const [colors, setColors] = useState();
   const [selectedColor, setSelectedColor] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [totallQuantity, setTotallQuantity] = useState();
 
   const plusQuantity = () => {
@@ -34,7 +35,7 @@ function SingleProduct() {
   };
 
   const minusQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity((e) => {
         return e - 1;
       });
@@ -89,7 +90,7 @@ function SingleProduct() {
                     />
                     {/* Main Product Img Code */}
                     <img
-                      className=" max-w-xs hover:scale-110 transition duration-300 ease-in-out rounded m-auto w-full h-full"
+                      className=" max-w-xs hover:scale-110 transition duration-300 ease-in-out rounded m-auto w-full  h-full lg:h-5/6"
                       src={data.image[imageNumber].url}
                     ></img>
                     <IconButton
@@ -122,7 +123,7 @@ function SingleProduct() {
                 <div className="w-full lg:w-1/2 md:w-1/2  ml-0 md:ml-8 lg:ml-8 ">
                   {/* Title Code */}
                   <Heading
-                    className="p-4 text-center md:text-left lg:text-left"
+                    className="p-4 text-center md:text-left lg:text-left newFont"
                     as="h2"
                     size="xl"
                   >
@@ -130,7 +131,10 @@ function SingleProduct() {
                   </Heading>
 
                   {/* Description Code */}
-                  <Text fontSize="xl" className="p-2 hidden md:block lg:block">
+                  <Text
+                    fontSize="xl"
+                    className="p-2 hidden md:block font-light lg:block newFont"
+                  >
                     {data.description}
                   </Text>
 
@@ -168,7 +172,7 @@ function SingleProduct() {
                         }
                         className="mt-8  w-full h-2/4 "
                         leftIcon={<ShoppingBagIcon />}
-                        colorScheme="purple"
+                        style={{ background: "rgb(26,15,52)", color: "white" }}
                         size={"lg"}
                         variant="solid"
                       >
@@ -186,9 +190,9 @@ function SingleProduct() {
                     </Text>
                   </div>
 
-                  {/* Color Selection Code */}
+                  {/* Color Selection Code for Mobbile */}
 
-                  <div className="flex mt-6 items-center w-3/5  md:block lg:block md:bottom-0 lg:bottom-0 ">
+                  <div className="flex mt-6 mb-12 items-center w-3/5  md:block lg:block md:bottom-0 lg:bottom-0 ">
                     <div>
                       <Text
                         fontSize="xl"
@@ -198,6 +202,12 @@ function SingleProduct() {
                       </Text>
                     </div>
                     <div className="flex items-center">
+                      <Text
+                        fontSize="xl"
+                        className="lg:block hidden font-semibold  mr-4 md:mr-0 lg:mr-0 "
+                      >
+                        Colors:
+                      </Text>
                       {colors &&
                         colors.map((e, index) => {
                           return (
@@ -254,7 +264,7 @@ function SingleProduct() {
                         }
                         className="mt-8  w-full h-2/4 "
                         leftIcon={<ShoppingBagIcon />}
-                        colorScheme="purple"
+                        style={{ background: "rgb(26,15,52)", color: "white" }}
                         size={"lg"}
                         variant="solid"
                       >

@@ -16,16 +16,13 @@ function ProductList() {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
 
   return (
     <div>
-      <div className=" p-1 gap-x-4 flex  flex-wrap w-full overflow-hidden ">
+      <div className="p-1 gap-x-4 flex -ml-0 lg:-ml-0 flex-wrap  w-full overflow-hidden ">
         {isLoading === true ? (
           <h2>Loading </h2>
         ) : fiter_products.length !== 0 ? (
-          (
-            
           fiter_products.map((item, index) => {
             const randomNumber = () => {
               return Math.round(Math.random() * (80 - 11) + 11); // Whole number between min and max
@@ -35,7 +32,7 @@ function ProductList() {
             return (
               <NavLink to={`SingleProduct/${item.id}`}>
                 <>
-                  <div className="w-80 h-2/3 ml-2  mt-4  border solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
+                  <div className="  w-80   lg: ml-6  lg: lg:ml-2  mt-10  border-2 solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
                     <img className="w-full h-full" src={item.image} />
 
                     <Text className="text-gray-600 font-medium text-2xl ml-4 mt-2">
@@ -45,7 +42,10 @@ function ProductList() {
                       <Text className="font-bold text-xl">
                         Rs. {item.price}
                       </Text>
-                      <Text className="bg-purple-600 text-white rounded-full p-3 font-extrabold mr-2">
+                      <Text
+                        style={{ background: "rgb(26 15 52)" }}
+                        className=" text-white rounded-full p-3 font-extrabold mr-2"
+                      >
                         {number}% Off
                       </Text>
                     </div>
@@ -63,7 +63,7 @@ function ProductList() {
                 </>
               </NavLink>
             );
-          }))
+          })
         ) : (
           products &&
           products.map((item, index) => {
@@ -75,8 +75,8 @@ function ProductList() {
             return (
               <NavLink to={`SingleProduct/${item.id}`}>
                 <>
-                  <div className="w-80 h-2/3 ml-2  mt-4  border solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
-                    <img className="w-full h-full" src={item.image} />
+                  <div className="w-80  -ml-4 md:ml-6 lg:ml-6  mt-10  border-2 solid border-gray-300 hover:border-4 hover:solid hover:border-purple-100 hover:rounded hover:cursor-pointer hover:shadow-sm hover:shadow-gray-900 ">
+                    <img className="w-full h-full " src={item.image} />
 
                     <Text className="text-gray-600 font-medium text-2xl ml-4 mt-2">
                       {name}
@@ -85,7 +85,10 @@ function ProductList() {
                       <Text className="font-bold text-xl">
                         Rs. {item.price}
                       </Text>
-                      <Text className="bg-purple-600 text-white rounded-full p-3 font-extrabold mr-2">
+                      <Text
+                        style={{ background: "rgb(26 15 52)" }}
+                        className=" text-white rounded-full p-3 font-extrabold mr-2"
+                      >
                         {number}% Off
                       </Text>
                     </div>
